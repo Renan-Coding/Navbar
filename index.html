@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="icon" href="file.ico" type="image/x-icon">
+    
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+      }
+
+      .navbar-container {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 500px;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #ffffff;
+        border-radius: 40px;
+        padding: 15px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 1;
+        transition: transform 0.3s ease;
+      }
+
+      .nav-icon {
+        font-size: 22px;
+        color: #dadada;
+        transition: color 0.3s ease;
+      }
+
+      /* Efeito hover */
+      .nav-item:hover .nav-icon {
+        color: #ffcc33;
+        transform: scale(1.1);
+      }
+
+      .active .nav-icon {
+        color: #ffcc33;
+      }
+
+      .add-button {
+        background-color: #ffcc33;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 2;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      .add-button:hover {
+        background-color: #f0b80e;
+        transform: translateX(-50%) scale(1.05);
+      }
+
+      .plus-icon {
+        color: #ffffff;
+        font-size: 30px;
+        font-weight: 300;
+      }
+
+      .spacer {
+        visibility: hidden;
+        width: 40px;
+      }
+
+      /* Conteúdo da página */
+      .content {
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 100px;
+      }
+
+      .page-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      /* Modal de Adicionar Arquivo */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s;
+      }
+
+      .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .file-modal {
+        background-color: white;
+        border-radius: 20px;
+        padding: 30px;
+        width: 80%;
+        max-width: 300px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transform: translateY(20px);
+        transition: transform 0.3s ease;
+      }
+
+      .modal-overlay.active .file-modal {
+        transform: translateY(0);
+      }
+
+      .file-icon {
+        color: #ffcc33;
+        font-size: 40px;
+        margin-bottom: 15px;
+      }
+
+      .file-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        margin: 0 0 5px;
+      }
+
+      .file-subtitle {
+        font-size: 14px;
+        color: #666;
+        margin: 0 0 25px;
+      }
+
+      .file-button {
+        background-color: #ffcc33;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        padding: 12px 25px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .file-button:hover {
+        background-color: #f0b80e;
+      }
+
+      /* Responsividade */
+      @media screen and (max-width: 600px) {
+        .navbar-container {
+          width: 95%;
+          bottom: 10px;
+        }
+
+        .navbar {
+          padding: 12px 0;
+        }
+
+        .nav-icon {
+          font-size: 20px;
+        }
+
+        .add-button {
+          width: 50px;
+          height: 50px;
+          top: -15px;
+        }
+
+        .plus-icon {
+          font-size: 25px;
+        }
+
+        .file-modal {
+          padding: 25px;
+        }
+      }
+
+      @media screen and (max-width: 400px) {
+        .navbar-container {
+          width: 100%;
+          bottom: 0;
+        }
+
+        .navbar {
+          border-radius: 40px 40px 0 0;
+          padding: 10px 0;
+        }
+
+        .nav-item {
+          padding: 8px;
+        }
+
+        .nav-icon {
+          font-size: 18px;
+        }
+
+        .add-button {
+          width: 45px;
+          height: 45px;
+          top: -12px;
+        }
+
+        .plus-icon {
+          font-size: 22px;
+        }
+
+        .spacer {
+          width: 30px;
+        }
+
+        .file-modal {
+          padding: 20px;
+          width: 85%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <h1 class="page-title">Página Inicial</h1>
+      <p>Clique nos ícones da barra de navegação para mudar de página.</p>
+    </div>
+
+    <div class="navbar-container">
+      <div class="navbar">
+        <div class="nav-item active" data-page="home">
+          <i class="fas fa-home nav-icon"></i>
+        </div>
+
+        <div class="nav-item" data-page="documentos">
+          <i class="far fa-file-alt nav-icon"></i>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="nav-item" data-page="notificacoes">
+          <i class="far fa-bell nav-icon"></i>
+        </div>
+
+        <div class="nav-item" data-page="perfil">
+          <i class="far fa-user nav-icon"></i>
+        </div>
+      </div>
+
+      <div class="add-button" id="addButton">
+        <span class="plus-icon">+</span>
+      </div>
+    </div>
+
+    <!-- Modal de Adicionar Arquivo -->
+    <div class="modal-overlay" id="fileModal">
+      <div class="file-modal">
+        <div class="file-icon">
+          <i class="far fa-file-alt"></i>
+        </div>
+        <h3 class="file-title">Adicionar</h3>
+        <p class="file-subtitle">Arquivo</p>
+        <button class="file-button" id="chooseFileBtn">Escolher Arquivo</button>
+      </div>
+    </div>
+
+    <script>
+      // Funcionalidade para a navegação
+      const navItems = document.querySelectorAll(".nav-item");
+      const pageTitle = document.querySelector(".page-title");
+
+      // Mapear os títulos das páginas
+      const pageTitles = {
+        home: "Página Inicial",
+        documentos: "Meus Documentos",
+        notificacoes: "Notificações",
+        perfil: "Meu Perfil",
+      };
+
+      // Adicionar event listeners para cada item
+      navItems.forEach((item) => {
+        item.addEventListener("click", function () {
+          // Remover classe 'active' de todos os itens
+          navItems.forEach((nav) => {
+            nav.classList.remove("active");
+          });
+
+          // Adicionar classe 'active' ao item clicado
+          this.classList.add("active");
+
+          // Atualizar o título da página
+          const pageName = this.getAttribute("data-page");
+          pageTitle.textContent = pageTitles[pageName];
+        });
+      });
+
+      // Funcionalidade para o modal de adicionar arquivo
+      const addButton = document.getElementById("addButton");
+      const fileModal = document.getElementById("fileModal");
+      const chooseFileBtn = document.getElementById("chooseFileBtn");
+
+      // Abrir o modal ao clicar no botão de adicionar
+      addButton.addEventListener("click", () => {
+        fileModal.classList.add("active");
+      });
+
+      // Fechar o modal ao clicar fora dele
+      fileModal.addEventListener("click", (event) => {
+        if (event.target === fileModal) {
+          fileModal.classList.remove("active");
+        }
+      });
+
+      // Simular a seleção de arquivo
+      chooseFileBtn.addEventListener("click", () => {
+        alert("Selecionando um arquivo...");
+        // Em uma aplicação real, você poderia abrir um seletor de arquivos aqui
+        // Por exemplo: document.getElementById('fileInput').click();
+        fileModal.classList.remove("active");
+      });
+    </script>
+  </body>
+</html>
