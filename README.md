@@ -9,6 +9,8 @@
 
 ## Relato de Desenvolvimento
 
+&emsp;Para esta atividade, escolhemos como componente a navbar do projeto que estamos desenvolvendo. No Figma, estruturamos o design da navbar em duas instâncias distintas: uma para o botão de adicionar arquivo, que ao ser acionado expande um pop-up, e outra para a própria navbar, que altera o destaque dos botões conforme são pressionados.
+
 &emsp;O processo de criação do protótipo do componente no Figma foi relativamente tranquilo, especialmente com o uso do Auto Layout para garantir responsividade e organização dos elementos. No entanto, enfrentamos dificuldades significativas ao utilizar o Dev Mode do Figma para exportar o código HTML/CSS.
 
 &emsp;Os códigos gerados automaticamente pelo Figma não refletiam fielmente o design elaborado. Em alguns casos, os códigos nem conseguiam exibir os ícones corretamente, o que comprometeu a reprodução visual do componente. Para contornar essas limitações, recorremos a uma inteligência artificial que nos auxiliou a formular o código necessário.
