@@ -19,3 +19,45 @@
 
 &emsp;Em resumo, o processo foi produtivo e nos permitiu compreender melhor as possibilidades e limitações do Dev Mode do Figma, assim como a importância de complementar ferramentas automáticas com recursos adicionais para alcançar um resultado mais fiel ao design.
 
+## Instruções de Instalação e Execução
+
+### Pré-requisitos
+- Um navegador web (Chrome, Safari, Edge).
+- Um servidor web local, como o Live Server, utilizado no VS Code.
+
+### Como Executar
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/Renan-Coding/Navbar.git
+```
+
+2. Navegue até o diretório do projeto:
+```bash
+cd Navbar
+```
+
+3. Você pode executar o projeto de duas maneiras:
+
+   **Opção 1 - Utilizando Live Server**
+   ```bash
+   Instalar a extensão Live Server
+   Ativar o localhost, apertando em "Go Live" no canto inferior direito
+   ```
+
+
+   **Opção 2 - Usando um servidor local (recomendado):**
+   - Ou se preferir usar o Node.js:
+     ```bash
+     npx serve
+     ```
+
+### Estrutura do Projeto
+- `index.html` - Estrutura principal da página
+- `style.css` - Estilos e animações
+- `script.js` - Funcionalidades interativas
+
+### Funcionalidades
+- Navbar responsiva com botões interativos
+- Pop-up para adicionar arquivo
+- Destaque visual nos botões ao serem pressionados

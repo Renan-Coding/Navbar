@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
+    <!-- Configurações básicas e meta tags -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Navbar</title>
+    <!-- Importação do Font Awesome para ícones -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -12,13 +14,16 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <!-- Conteúdo principal da página -->
     <div class="content">
       <h1 class="page-title">Página Inicial</h1>
       <p>Clique nos ícones da barra de navegação para mudar de página.</p>
     </div>
 
+    <!-- Barra de navegação fixa na parte inferior -->
     <div class="navbar-container">
       <div class="navbar">
+        <!-- Ícones de navegação -->
         <div class="nav-item active" data-page="home">
           <i class="fas fa-home nav-icon"></i>
         </div>
@@ -26,6 +31,7 @@
           <i class="far fa-file-alt nav-icon"></i>
         </div>
 
+        <!-- Espaçador para centralizar o botão de adicionar -->
         <div class="spacer"></div>
 
         <div class="nav-item" data-page="notificacoes">
@@ -35,11 +41,13 @@
           <i class="far fa-user nav-icon"></i>
         </div>
       </div>
+      <!-- Botão de adicionar arquivo -->
       <div class="add-button" id="addButton">
         <span class="plus-icon">+</span>
       </div>
     </div>
 
+    <!-- Modal para adicionar arquivo -->
     <div class="modal-overlay" id="fileModal">
       <div class="file-modal">
         <div class="file-icon">
